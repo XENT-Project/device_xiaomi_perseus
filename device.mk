@@ -62,6 +62,10 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps_debug.conf:system/etc/gps_debug.conf
+    
+# HW crypto
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti
 
 # Input
 PRODUCT_COPY_FILES += \
