@@ -23,4 +23,4 @@ Camera  | Dual 12 MP, 4-axis OIS, 2x optical zoom, dual PDAF, dual-LED (dual ton
 
 ## Device picture
 
-![Xiaomi Mi MIX 3](https://xiaomi-mi.com/uploads/CatalogueImage/pvm_01b_17242_1540477917.jpg "Xiaomi Mi Mix 3 in black")
+![Xiaomi Mi MIX 3](https://i.imgur.com/pxpWGhw.png "Xiaomi Mi Mix 3")
