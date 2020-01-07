@@ -22,11 +22,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.fp.fpc=true \
     ro.hardware.fp.goodix=true
 
-# GNSS
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.flp=brcm \
-    ro.hardware.gps=brcm
-
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.nfc_nci=nqx.default \

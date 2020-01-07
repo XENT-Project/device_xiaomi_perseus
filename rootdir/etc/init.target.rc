@@ -31,31 +31,10 @@ on init
     write /sys/class/leds/ir/max_brightness 63
 
 on boot
-    chown gps system /sys/devices/platform/soc/890000.spi/spi_master/spi32766/spi32766.0/nstandby
-    chmod 0774 /sys/devices/platform/soc/890000.spi/spi_master/spi32766/spi32766.0/nstandby
-    chown gps system /dev/bbd_control
-    chmod 0774 /dev/bbd_control
-    chown gps system /dev/bbd_patch
-    chmod 0774 /dev/bbd_patch
-    chown gps system /dev/bbd_sensor
-    chmod 0774 /dev/bbd_sensor
     chown system system /sys/class/power_supply/battery/input_suspend
     chmod 0666 /sys/class/power_supply/battery/input_suspend
 
 on post-fs-data
-    mkdir /data/vendor/gps
-    mkdir /data/vendor/gps/log
-    mkdir /data/vendor/gps/log/gps
-    mkdir /data/vendor/gps/log/lhd
-    chown gps system /data/vendor/gps
-    chown gps system /data/vendor/gps/log
-    chown gps system /data/vendor/gps/log/gps
-    chown gps system /data/vendor/gps/log/lhd
-    chown gps system /dev/ttyBCM
-    chmod 775 /data/vendor/gps
-    chmod 775 /data/vendor/gps/log
-    chmod 770 /data/vendor/gps/log/gps
-    chmod 770 /data/vendor/gps/log/lhd
     chmod 775 /dev/ttyBCM
 
 service displayfeature-hal-1-0 /vendor/bin/hw/vendor.xiaomi.hardware.displayfeature@1.0-service
@@ -66,20 +45,7 @@ service displayfeature-hal-1-0 /vendor/bin/hw/vendor.xiaomi.hardware.displayfeat
     onrestart restart displayfeature
     disabled
 
-service glgps /vendor/bin/glgps -c /vendor/etc/gpsconfig.xml
-    socket gps seqpacket 660 gps system
-    class late_start
-    user gps
-    group system inet sdcard_rw wakelock
-    ioprio rt 0
-
 service ignss_1_1 /vendor/bin/ignss_1_1
     class late_start
     user system
     group system inet sdcard_rw wakelock
-
-service lhd /vendor/bin/lhd /vendor/etc/lhd.conf
-    class late_start
-    user gps
-    group system inet net_raw sdcard_rw wakelock
-    ioprio rt 0

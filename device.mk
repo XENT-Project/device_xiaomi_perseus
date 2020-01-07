@@ -58,10 +58,6 @@ PRODUCT_PACKAGES += \
 # Device init scripts
 PRODUCT_PACKAGES += \
     init.target.rc
-
-# GPS
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps_debug.conf:system/etc/gps_debug.conf
     
 # HW crypto
 PRODUCT_PACKAGES += \
