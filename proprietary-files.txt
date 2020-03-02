@@ -217,7 +217,7 @@ vendor/lib64/libgf_hal.so
 vendor/lib64/vendor.goodix.hardware.fingerprintextension@1.0.so
 
 # GNSS
-vendor/bin/ignss_1_1
+vendor/bin/ignss_2_0
 vendor/bin/gps.cer
 vendor/bin/glgps
 vendor/bin/lhd
@@ -227,7 +227,7 @@ vendor/etc/lhd.conf
 vendor/etc/SensorHub.patch
 vendor/lib64/hw/gps.brcm.so
 vendor/lib64/hw/flp.brcm.so
-vendor/lib64/android.hardware.gnss@1.1-impl-xiaomi.so
+vendor/lib64/android.hardware.gnss@2.0-impl-xiaomi.so
 vendor/lib64/liblocation_api.so
 vendor/lib64/libloc_core.so
 vendor/lib64/libdiag_jni.so
