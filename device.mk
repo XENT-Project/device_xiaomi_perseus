@@ -1,10 +1,13 @@
 #
-# Copyright (C) 2018-2019 The LineageOS Project
+# Copyright (C) 2019 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/xiaomi/perseus/perseus-vendor.mk)
@@ -15,7 +18,7 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay 
+    $(LOCAL_PATH)/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -26,9 +29,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.hifi_sensors.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml
-
-# Properties
--include $(LOCAL_PATH)/device-props.mk
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -47,10 +47,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9340.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_wcd9340.xml \
     $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
 
-# Camera
-PRODUCT_PACKAGES += \
-    com.vidhance.node.eis.shim
-
 # Device fstab
 PRODUCT_PACKAGES += \
     fstab.qcom
@@ -58,14 +54,6 @@ PRODUCT_PACKAGES += \
 # Device init scripts
 PRODUCT_PACKAGES += \
     init.target.rc
-    
-# HW crypto
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti
-    
-# GPS
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps_debug.conf
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -91,11 +79,9 @@ PRODUCT_PACKAGES += \
     vendor.nxp.hardware.nfc@1.2-service
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/libnfc-nxp_RF.conf \
     $(LOCAL_PATH)/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
-
-# Perf
-PRODUCT_BOOT_JARS += \
 
 # Secure element
 PRODUCT_PACKAGES += \
@@ -104,7 +90,3 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     vendor/nxp/opensource/pn5xx
-
-# Wallpapers
-PRODUCT_PACKAGES += \
-    WallpapersBReel2018

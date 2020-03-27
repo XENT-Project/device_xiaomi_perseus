@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2018-2019 The LineageOS Project
+# Copyright (C) 2019 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -19,9 +19,5 @@ export DEVICE_COMMON=sdm845-common
 export VENDOR=xiaomi
 
 export DEVICE_BRINGUP_YEAR=2019
-
-# Load com.vidhance.node.eis shim
-VIDHANCE_EIS="$BLOB_ROOT"/vendor/lib/camera/components/com.vidhance.node.eis.so
-patchelf --add-needed com.vidhance.node.eis.shim.so "$VIDHANCE_EIS"
 
 "./../../${VENDOR}/${DEVICE_COMMON}/extract-files.sh" "$@"

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018-2019 The LineageOS Project
+# Copyright (C) 2019-2020 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -12,32 +12,27 @@ DEVICE_PATH := device/xiaomi/perseus
 # Assert
 TARGET_OTA_ASSERT_DEVICE := perseus
 
-# Display
-TARGET_HAS_HDR_DISPLAY := true
-TARGET_HAS_WIDE_COLOR_DISPLAY := true
-TARGET_USES_COLOR_METADATA := true
-
 # Kernel
+BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_KERNEL_CONFIG := perseus_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/perseus
+
+# Partitions
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+
+# Recovery
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
 # HIDL
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # NFC
 TARGET_USES_NQ_NFC := true
-
-# Partitions
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_KERNEL_SEPARATED_DTBO := true
-BOARD_DTBOIMG_PARTITION_SIZE := 8388608
-
-# Power
-TARGET_TAP_TO_WAKE_NODE := "/dev/input/event3"
-
-# Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
