@@ -8,3 +8,9 @@ persist.camera.saf.stablecnt=3
 
 # Display
 ro.surface_flinger.has_wide_color_display=true
+
+# Display density
+ro.sf.lcd_density=440
+
+# Face Unlock
+ro.face.moto_unlock_service.cam_id=5
