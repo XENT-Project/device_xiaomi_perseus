@@ -5,6 +5,14 @@ persist.camera.sat.fallback.dist.d=5
 persist.camera.sat.fallback.luxindex=310
 persist.camera.sat.fallback.lux.d=50
 persist.camera.saf.stablecnt=3
+persist.vendor.camera.perfcapture=1
+
+# USB debugging
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp,adb \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    ro.debuggable=1
 
 # Display
 ro.surface_flinger.has_wide_color_display=true
